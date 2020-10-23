@@ -10,8 +10,6 @@ class FlatsController < ApplicationController
     end
   end
 
-  def show; end
-
   def new
     @flat = Flat.new
   end
@@ -24,6 +22,8 @@ class FlatsController < ApplicationController
       render :new
     end
   end
+
+  def show; end
 
   def edit; end
 
@@ -39,11 +39,11 @@ class FlatsController < ApplicationController
 
   private
 
-  def flat_params
-    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests, :picture_url)
-  end
-
   def set_flat
     @flat = Flat.find(params[:id])
+  end
+
+  def flat_params
+    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests, :picture_url)
   end
 end
